@@ -1,25 +1,30 @@
 <template>
-  <view class="view-scoll-container">
-    <scroll-view class="left" scroll-y="true" :style="{height: wh + 'px'}">
-      <block v-for="(item,i) in cateList" :key="i">
-        <view :class="['scroll-view-item',i === active ? 'active' : '']" @click="changeCate(i)">{{item.cat_name}}</view>
-      </block>
-    </scroll-view>
-    <scroll-view scroll-y="true" :style="{height: wh + 'px'}" :scroll-top="scrollTop">
-     <view class="cate-lv2" v-for="(item2,i2) in cateLevel2" :key="i2">
-       <!-- //二级分类的标题 -->
-       <view class="cate-lv2-title">
-         /{{item2.cat_name}}/
-       </view>
-       <!-- 二级分类下的三级列表 -->
-       <view class="cate-lv3-list">
-         <view class="cate-lv3-item" v-for="(item3,i3) in item2.children" :key="i3" @click="goToGoodsList(item3)">
-           <image :src="item3.cat_icon.replace('dev','web')"></image>
-           <span>{{item3.cat_name}}</span>
+  <view>
+    <view class="search-box">
+      <my-search @click="goToSearch"></my-search>
+    </view>
+    <view class="view-scoll-container">
+      <scroll-view class="left" scroll-y="true" :style="{height: wh + 'px'}">
+        <block v-for="(item,i) in cateList" :key="i">
+          <view :class="['scroll-view-item',i === active ? 'active' : '']" @click="changeCate(i)">{{item.cat_name}}</view>
+        </block>
+      </scroll-view>
+      <scroll-view scroll-y="true" :style="{height: wh + 'px'}" :scroll-top="scrollTop">
+       <view class="cate-lv2" v-for="(item2,i2) in cateLevel2" :key="i2">
+         <!-- //二级分类的标题 -->
+         <view class="cate-lv2-title">
+           /{{item2.cat_name}}/
+         </view>
+         <!-- 二级分类下的三级列表 -->
+         <view class="cate-lv3-list">
+           <view class="cate-lv3-item" v-for="(item3,i3) in item2.children" :key="i3" @click="goToGoodsList(item3)">
+             <image :src="item3.cat_icon.replace('dev','web')"></image>
+             <span>{{item3.cat_name}}</span>
+           </view>
          </view>
        </view>
-     </view>
-    </scroll-view>
+      </scroll-view>
+    </view>
   </view>
 </template>
 
@@ -36,7 +41,7 @@
     },
     onLoad(){
       const sysInfo = uni.getSystemInfoSync()
-      this.wh = sysInfo.windowHeight
+      this.wh = sysInfo.windowHeight - 50
       this.getCateList()
     },
     methods:{
@@ -47,6 +52,11 @@
         this.cateList = res.data.message
         //为二级分类复制
         this.cateLevel2 = res.data.message[0].children
+      },
+      goToSearch(){
+        uni.navigateTo({
+          url:'/subpkg/search/search'
+        })
       },
       goToGoodsList(item3){
         uni.navigateTo({
@@ -116,4 +126,9 @@
      }
    }
  }
+.search-box{
+  position: sticky;
+  top: -2px;
+  z-index: 999;
+}
 </style>
