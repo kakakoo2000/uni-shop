@@ -88,7 +88,7 @@
             prod.url='/subpkg/goods_list/goods_list?' + prod.navigator_url.split("?")[1]
           })
         })
-        console.log(res)
+        // console.log(res)
         this.floorList = res.message
       }
     }

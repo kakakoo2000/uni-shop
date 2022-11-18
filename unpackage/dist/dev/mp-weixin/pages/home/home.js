@@ -245,8 +245,8 @@ var _default =
                     prod.url = '/subpkg/goods_list/goods_list?' + prod.navigator_url.split("?")[1];
                   });
                 });
-                console.log(res);
-                _this3.floorList = res.message;case 9:case "end":return _context3.stop();}}}, _callee3);}))();
+                // console.log(res)
+                _this3.floorList = res.message;case 8:case "end":return _context3.stop();}}}, _callee3);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

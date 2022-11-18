@@ -237,12 +237,12 @@ var _default =
   },
   methods: {
     getCateList: function getCateList() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  uni.$http.get('/api/public/v1/categories'));case 2:res = _context.sent;
-                console.log(res);if (!(
-                res.statusCode !== 200)) {_context.next = 6;break;}return _context.abrupt("return", uni.$showMsg());case 6:
+                  uni.$http.get('/api/public/v1/categories'));case 2:res = _context.sent;if (!(
+
+                res.statusCode !== 200)) {_context.next = 5;break;}return _context.abrupt("return", uni.$showMsg());case 5:
                 _this.cateList = res.data.message;
                 //为二级分类复制
-                _this.cateLevel2 = res.data.message[0].children;case 8:case "end":return _context.stop();}}}, _callee);}))();
+                _this.cateLevel2 = res.data.message[0].children;case 7:case "end":return _context.stop();}}}, _callee);}))();
     },
     goToSearch: function goToSearch() {
       uni.navigateTo({

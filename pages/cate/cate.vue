@@ -47,7 +47,7 @@
     methods:{
      async getCateList(){
         const res = await uni.$http.get('/api/public/v1/categories')
-        console.log(res)
+        // console.log(res)
         if(res.statusCode !== 200) return uni.$showMsg()
         this.cateList = res.data.message
         //为二级分类复制
